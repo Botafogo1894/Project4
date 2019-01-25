@@ -13,23 +13,18 @@
 
 **Obtaining Data:** 
 
-We found a cv on Kaggle with detailed players stats for over 18,000 players in FIFA 19. After cleaning up the data, standardazing our features and creating our categorical variables,  we ended up with 17907 players with 53 features
+We found a csv on Kaggle with detailed players stats for over 18,000 players in FIFA 19. After cleaning up the data, standardazing our features and creating our categorical variables,  we ended up with 17907 players with 53 features
 
+**Outline of our process:** 
 
-
-
-### Cleaning Data
-
-This took a long time due to the fact that the lyrics and song titles were scarped fro mdifferent places so there was a lot of messy syntax, punctuation and foreign words we had to remove from the data - most of day one and some of day two.
-We used a combination of  NLTK, Pandas and regex methods for cleaning the text, stemming, lemmatizing, removing stopwords, tokenizing, appending the clean lyrics back to the Pandas DataFrame.
-
-**Exploring Data:** Looking at our Pandas Dataframe we found…
-
-First thing we did was check for non-values and dropped songs with NaN and after cleaning we still had 200,000 rows.
-Then we looked at value counts for Genre decided to drop Folk, Indie, and Other because the first two didn't have enough data and Other doesn't provide any predictive value.
-
-After all of this cleanup we were left with eight basic genres: **Rock, Pop, Hip Hop, Metal, Country, Jazz, Electronic, R&B**. These are the target classes that we are trying to predict.
-Distribution between genres was uneven, so we decided to randomly select 900 songs per genre giving us a total number of rows **900 songs * 8 genres = 7200 songs.**
+- Break down the DataFrame into data for the four main positions - GK, DF, MD, ST
+- Run K-Means clustering to see what features the model will group players by
+- Run four different regressions models which aim to predict a player's value based on 53 player attributes
+- Isolate the top 15 features for each position by the weights that each model assigned
+- Combined all the features and curate a list of the unique features
+- Run our best model with those curated features on the four dataframes
+- Apply the weights of our final model (XGBoost with 95% R2_score) to the important features for each position and use the resulting value as a “Selector” score, which we believe would be a "smarter" way of finding optimal players. 
+- Show Graphs that compare teams built using our Algorithm vs. teams built using Overall rating
 
 ### Feature Engineering and Model Optimization:
 
