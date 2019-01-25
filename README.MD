@@ -178,11 +178,16 @@ Now let's see what the team would look like if we spend our max budget onplayers
 
 ![](https://github.com/Botafogo1894/Project4/blob/master/pictures/Max_budget_overall.png)
 
-AS you can see from the two tables above, almost every player in the first chart has a higher Selector Score than their counterpart in the second chart, which means that our Algorithm picked a better curated, more balanced team. To test the validity of our findings, we iterated our algorithm through 22 different budgets ranging from 15M to 125M and plotted the results below:
+As you can see from the two tables above, almost every player in the first chart has a higher Selector Score than their counterpart in the second chart, which means that our Algorithm picked a better curated, more balanced team. 
+
+To test the validity of our findings further, we iterated our algorithm through 22 different budgets ranging from 15M to 125M and plotted the avg Selector score per team and budget leftover. The Blue Dots belwo represent our Algorithms picks, whi are consisntently appearing in that high-value area, meaning that for every given budget our algorithm gets you the combination of players that maximize the most important soccer skills for each position. 
+
+The Red Dots represent the average selector score for the algorithm that picks players solely on their Overall rating.  As you can see, this data is a lot more incosistent and noisy and we get a few instances of teams with very low average Selector scores, which further supports our theory that a deeper dive into individual player stats and a more strategic allocation of your budget can result in a much stronger all-around team, which will crush your competition!
 
 ![](https://github.com/Botafogo1894/Project4/blob/master/pictures/Compare_final_22_teams.png)
 
+## Conclusion and Final Thoughts:
 
+This was a very interestign deep dive, which gave us sufficient evidence that by quickly glancing at the Overall Rating score on a FIFA player's card and blindly spending yoru coins to get that player on your team, you're often not getting the best "bang for your buck". 
 
-**PART THREE:** Using an Unsupervised Learning model to identify distinctive topics and keywords for each genre
-
+We found that it is worth spending some extra time to click on that player and scroll through their individual stats, to make sure that they have higher values on all the important attributes for the respective position that they play. 
