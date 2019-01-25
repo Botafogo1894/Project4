@@ -32,36 +32,32 @@ The first step was to run a **K-Means Unsupervised** model and four regression m
 
 ![](https://github.com/Botafogo1894/Project4/blob/master/pictures/RF_GK2.png)
 ![](https://github.com/Botafogo1894/Project4/blob/master/pictures/XGB_DF2.png)
-![](https://github.com/Botafogo1894/Project4/blob/master/pictures/SVM_MD2.png)
-![](https://github.com/Botafogo1894/Project4/blob/master/pictures/Ridge_ST2.png)
+![](https://github.com/Botafogo1894/Project4/blob/master/pictures/Ridge_MD2.png)
+![](https://github.com/Botafogo1894/Project4/blob/master/pictures/SVM_ST2.png)
 
-As you can see from the graph, PCA didn't improve performance in either model, so we decided to not use PCA moving forward.
+As you can see from the graphs, Overall Rating is an important factor in some models, but not in all and there are a lot of other individual features taht were assigned higher weights than the Overall rating. 
 
-Next things we wanted to do was **GridSearch** on the three top-performing models and pick the model with the combination of parameters that yielded the highest accuracy score.
+Next things we wanted to do was isolate all these important skills and run our top model - **XGBoos** to get weighted coffeicients for each attribute and multiply those together to create a final "Selector" score, which is a weighted combination of the most important attributes for each position - GK, DF, MD or ST. 
 
-**GridSearch on the Random Forest** improved performance from **41% to 43%** accuracy.
+**Next Step:** Plot players' overall scores and price versus their combined slector score
 
-**GridSearch on the Gradient Boost** improved performance from **45% to 50%** accuracy.
+The Graphs below demonstrate that for a good number of the players, there is a somewaht linear correlation between Overall Rating and our Selector score. However, we can also clearly isolate many instances where players with a high Overall Rating, which cost a lot of money, do not actually posses high ratings for the individual skills that are important.
 
-**GridSearch on Naive Bayes** did not generate improved performance because the default parameters are optimal.
+![](https://github.com/Botafogo1894/Project4/blob/master/pictures/COmp_Df2.png)
 
-## Interpreting and communicating the final results:
+In the example above, we can see that there is a "value separation area" right around 1.4-1.6 selector score, where you have a decent number of expensive players wiht high overall rating, that have a lower selector score, than some cheaper players towards the left corner of the graph, where you could be getting players with a much better all-around skillset for cheaper, just because their overall rating is not that high, so most recreational players are not drawn to bid up their price.
 
-Below you can see the graph of our top three models Final Performance after optimization.
+**Writing Our team Selector Algorithm:** 
 
-![](https://github.com/Botafogo1894/Project3/blob/master/top%203%20models.png)
+To continue our investigation further, we decided to write an algorithm that takes in a budget and a player position that you want to spend that budget on and gives you a recommended list of players, optimizing for selector score: Example below exposes some of those players with high Overall rating, but low Selector score and vice versa:
 
-Our best model, **Gradient Boost after GridSearch yielded 50% accuracy**, which is just about four times better than random guessing, 12.5%. Even though it's not a stellar number, we are still impressed that given only 7200 lyrics we were able to train a model that can predict out of eight genres with 50% accuracy.
+![](https://github.com/Botafogo1894/Project4/blob/master/pictures/Best_Pick_CM2.png)
 
-From experimenting with Grid Search and PCA optimizations, we found that Multinomial Naive Bayes was the fastest and simplest model and it yielded only 5% less accurate than the top model.
+From the graph below you can see that there are a few players who cost over 20M, who have a low selector score. Here is the example in reverse below, where we're plotting the players that our algorithm recommends, rating them by Selector Score. You can see that not all of them have a high Overall Rating, but we know from our prior invesstigation and all the Model weights and insights that these are players who posses all the strong individual qualities to make a good defender.
 
-If you have a lot of features and optimization proves to be computationally expensive, you might opt to pick Naive Bayes. If you have sufficient time and computing power and you want to optimize accuracy score, grid search with Gradient Boost is the way to go.
+![](https://github.com/Botafogo1894/Project4/blob/master/pictures/Best_Pick_DF2.png)
 
-**PART TWO:** Binary Classification for predicting if a song is a major hit based on song lyrics.
 
-**Modeling:** We wanted to predict whether or not a song was on our top song hit list. We repeated the same steps as in the genre classifier model, this time creating Top 100 list of songs as our target. The target column contains a 1 for every song that was a hit and 0 to indicate songs that were not. We ran the same models and yielded the results found below and were able to predict with 96% accuracy which songs were going to be a hit.
-
-![](https://github.com/Botafogo1894/Project3/blob/master/basic%205%20for%20binary%20problem.png)
 
 Similarly to our first model, Lemmatized performed slightly better even though the results were much closer this time when there were two choices.
 
