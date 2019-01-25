@@ -51,7 +51,7 @@ In the example above, we can see that there is a "value separation area" right a
 
 To continue our investigation further, we decided to write an algorithm that takes in a budget and a player position that you want to spend that budget on and gives you a recommended list of players, optimizing for selector score. Below you can see the code for this simple algo:
 
-```
+```python
 def pick_player_by_selector(budget, position, count = 3):
     count = count
     empty = []
@@ -83,9 +83,7 @@ def pick_player_by_selector(budget, position, count = 3):
             if item['name'] in names and item['price'] <= budget and count > 0:
                 empty.append(item)
                 count -= 1             
-    return empty
-    
-    ```
+    return empty ```
 
 
 The Graph below was generated after running our player recommender for the Central Midfielder position - CM. This helps us identify some of those players with high Overall rating, but low Selector score and vice versa:
