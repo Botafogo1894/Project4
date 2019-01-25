@@ -39,7 +39,8 @@ We decided to go with the top three models, **Multinomial Naive Bayes, Gradient 
 Next thing we did was PCA where we ran a test on our data to see how many components would preserve 80% of the variation.
 Then we ran **PCA with n_components = 1800** on our top three models to see if that improved performance. The graph below shows the result:
 
-![](https://github.com/Botafogo1894/Project3/blob/master/PCA%20for%20part%201.png)
+![](https://github.com/Botafogo1894/Project4/blob/master/pictures/RF_GK2.png)
+
 
 As you can see from the graph, PCA didn't improve performance in either model, so we decided to not use PCA moving forward.
 
