@@ -49,14 +49,52 @@ In the example above, we can see that there is a "value separation area" right a
 
 **Writing Our team Selector Algorithm:** 
 
-To continue our investigation further, we decided to write an algorithm that takes in a budget and a player position that you want to spend that budget on and gives you a recommended list of players, optimizing for selector score: Example below exposes some of those players with high Overall rating, but low Selector score and vice versa:
+To continue our investigation further, we decided to write an algorithm that takes in a budget and a player position that you want to spend that budget on and gives you a recommended list of players, optimizing for selector score. Below you can see the code for this simple algo:
+
+```
+def pick_player_by_selector(budget, position, count = 3):
+    count = count
+    empty = []
+    names = [item[0] for item in name_pos if item[1] == position]
+    STs = ["ST", "LF", "RF", "CF", "RS", "LS", "LW", "RW"]
+    MDs = ["RM", "LM", "CAM", "CDM", "LCM", "RCM", "RDM", "LDM", "RAM", "LAM"]
+    DFs = ["CB", "LB", "RB", "RCB", "LCB", "RWB", "LWB"]
+    if position == "GK":
+        keepers = sorted_players_selector[0]
+        for item in keepers:
+            if item['name'] in names and item['price'] <= budget and count > 0:
+                empty.append(item)
+                count -= 1
+    elif position in DFs:
+        defenders = sorted_players_selector[1]
+        for item in defenders:
+            if item['name'] in names and item['price'] <= budget and count > 0:
+                empty.append(item)
+                count -= 1
+    elif position in MDs:
+        mids = sorted_players_selector[2]
+        for item in mids:
+            if item['name'] in names and item['price'] <= budget and count > 0:
+                empty.append(item)
+                count -= 1
+    elif position in STs:
+        strikers = sorted_players_selector[3]
+        for item in strikers:
+            if item['name'] in names and item['price'] <= budget and count > 0:
+                empty.append(item)
+                count -= 1             
+    return empty
+    
+    ```
+
+
+The Graph below was generated after running our player recommender for the Central Midfielder position - CM. This helps us identify some of those players with high Overall rating, but low Selector score and vice versa:
 
 ![](https://github.com/Botafogo1894/Project4/blob/master/pictures/Best_Pick_CM2.png)
 
-From the graph below you can see that there are a few players who cost over 20M, who have a low selector score. Here is the example in reverse below, where we're plotting the players that our algorithm recommends, rating them by Selector Score. You can see that not all of them have a high Overall Rating, but we know from our prior invesstigation and all the Model weights and insights that these are players who posses all the strong individual qualities to make a good defender.
+From the graph above you can see that there are a few players who cost over 20M, who have a low selector score. Here is the example in reverse below, where we're plotting the players that our algorithm recommends, rating them by Selector Score. You can see that not all of them have a high Overall Rating, but we know from our prior invesstigation on individual Model weights and insights that the players with the higher selector scores posses all the strong individual qualities to make a good defender.
 
-![](https://github.com/Botafogo1894/Project4/blob/master/pictures/Best_Pick_DF2.png)
-
+![](https://github.com/Botafogo1894/Project4/blob/master/pictures/CAM_selector.png)
 
 
 Similarly to our first model, Lemmatized performed slightly better even though the results were much closer this time when there were two choices.
