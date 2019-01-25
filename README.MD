@@ -28,8 +28,7 @@ We found a csv on Kaggle with detailed players stats for over 18,000 players in 
 
 ### Feature Engineering and Model Optimization:
 
-After stemming and lemmatizing all the song lyrics and creating a features matrix we were left with an array containing 30,000 features.
-We wanted to see how five basic models, **Multinomial Naive Bayes, Random Forest, AdaBoost, Gradient Boost, K-Nearest Neighbors***, with both stemmed and lemmatized words compare score results and pick lemmatizing over stemmatizing in our five models for future model optimization. The chart below shows our results:
+The first steps was to run a **K-Means Unsupervised** model and four regression models, which can help us isolate the top 15 player attributes for each position **Ridge Regression, Random Forest, SVM, and XGBoost***. Below you can see a few samples of those features in barcharts:
 
 ![](https://github.com/Botafogo1894/Project3/blob/master/basic%205%20models.png)
 
