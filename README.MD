@@ -2,11 +2,22 @@
 
 # FIFA 19 Ultimate Team Selector
 
-### What is the main hypothesis we're trying to test with our project?
+### What is the main goal of our project and what hypothesis are we trying to test?
 
-**Obtaining Data:** Where did we get our data?
+- Our hypothesis is that picking a player, using the easy "Overall" stats, is not the best investment for your game coins.  In fact, the majority of people who play FIFA 19 tend to make that mistake, since the "Overall" Rating is the main stat that appears on the front of player cards which makes it an easy choice for most recreational players. 
+- Our hypothesis is that if you dig deeper into the individual player skills and carefully curate the optimal skill combo for each position on the field, you will end up with a much stronger combination of players and better team chemistry.
 
-We got 
+- Once we prove our hypothesis, we want to build a player recommendation system where you can input your budget and the position which you want to buy a player for and our selector will return a list of the top recommended players based on individual skills and not Overall rating.
+
+- Lastly, we would like to automate the process via an algorithm which can automatically build a team based on maximizing the specific FIFA stats that are highly important for that position and based on the team formation that you want to play with and whether you want to alocate more budget towards your defensive or offensive players. 
+
+**Obtaining Data:** 
+
+We found a cv on Kaggle with detailed players stats for over 18,000 players in FIFA 19. After cleaning up the data, standardazing our features and creating our categorical variables,  we ended up with 17907 players with 53 features
+
+
+
+
 ### Cleaning Data
 
 This took a long time due to the fact that the lyrics and song titles were scarped fro mdifferent places so there was a lot of messy syntax, punctuation and foreign words we had to remove from the data - most of day one and some of day two.
