@@ -28,19 +28,12 @@ We found a csv on Kaggle with detailed players stats for over 18,000 players in 
 
 ### Feature Engineering and Model Optimization:
 
-The first steps was to run a **K-Means Unsupervised** model and four regression models, which can help us isolate the top 15 player attributes for each position **Ridge Regression, Random Forest, SVM, and XGBoost***. Below you can see a few samples of those features in barcharts:
-
-![](https://github.com/Botafogo1894/Project3/blob/master/basic%205%20models.png)
-
-We chose to go with **lemmed words** over stemmed words because every model consistently performed at least 1% better.
-
-We decided to go with the top three models, **Multinomial Naive Bayes, Gradient Boost, and Random Forest**, for further model optimization.
-
-Next thing we did was PCA where we ran a test on our data to see how many components would preserve 80% of the variation.
-Then we ran **PCA with n_components = 1800** on our top three models to see if that improved performance. The graph below shows the result:
+The first step was to run a **K-Means Unsupervised** model and four regression models, which can help us isolate the top 15 player attributes for each position **Ridge Regression, Random Forest, SVM, and XGBoost***. Below you can see a few samples of those features in barcharts:
 
 ![](https://github.com/Botafogo1894/Project4/blob/master/pictures/RF_GK2.png)
-
+![](https://github.com/Botafogo1894/Project4/blob/master/pictures/XGB_DF2.png)
+![](https://github.com/Botafogo1894/Project4/blob/master/pictures/SVM_MD2.png)
+![](https://github.com/Botafogo1894/Project4/blob/master/pictures/Ridge_ST2.png)
 
 As you can see from the graph, PCA didn't improve performance in either model, so we decided to not use PCA moving forward.
 
