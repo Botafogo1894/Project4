@@ -172,16 +172,17 @@ Below you can see the result of setting a max budget and seeing what the most op
 
 ![](https://github.com/Botafogo1894/Project4/blob/master/pictures/Final_team_selector.png)
 
-All of our models had around 96% score. We decided to try PCA and grid search but the results indicated there was not much room for optimization, so when it comes to binary classification it appeared that we could go with either of the Top 3 performing models and not sacrifice much accuracy.
+As you can see all of our players above, have a very high Selector score, which is an indication that their individual stats are optimized for their specific position. 
+
+Now let's see what the team would look like if we spend our max budget onplayers, which have higher FIFA Overall Rating. 
+
+![](https://github.com/Botafogo1894/Project4/blob/master/pictures/Max_budget_overall.png)
+
+AS you can see from the two tables above, almost every player in the first chart has a higher Selector Score than their counterpart in the second chart, which means that our Algorithm picked a better curated, more balanced team. To test the validity of our findings, we iterated our algorithm through 22 different budgets ranging from 15M to 125M and plotted the results below:
+
+![](https://github.com/Botafogo1894/Project4/blob/master/pictures/Compare_final_22_teams.png)
+
+
 
 **PART THREE:** Using an Unsupervised Learning model to identify distinctive topics and keywords for each genre
 
-We used gensim.corpora.Dictionary to create a frequency dictionary for the lemmed, tokenized word set. We grabbed keywords from each genre and generated a Topic Model score.
-
-Using the TFIDF Matrix we ran a Topic Modeling LDA algorithm and printed the word clouds for the top Keywords in each genre that the unsupervised algorithm identified below:
-
-![](https://github.com/Botafogo1894/Project3/blob/master/Pop_n_Metal.png)
-
-![](https://github.com/Botafogo1894/Project3/blob/master/Jazz_n_rock.png)
-
-![](https://github.com/Botafogo1894/Project3/blob/master/rnb_n_hip.png)
